@@ -1,0 +1,268 @@
+Data Structure and Algorithm:- 
+1. Basic 
+     i. Kch bhi print krna ----> System.out.println()  || System.out.print()
+     ii. Data Types ---> Containers ---> Jo koi value store kreee / Data Store kree 
+     iii. Loops ---> while / for loop / do while 
+     iv. Conditionals ---> If else / Switch statement 
+2. Topics :-
+        1. Patterns [ Done ]
+        2. Functions & Arrays 
+        3. String and StringBuilder()
+        4. Sorting 
+        5. Searching 
+        6. Recursion 
+        7. LinkedList 
+        8. Stack and queue
+        9. Hashmap
+        10. Tree
+        11. Graph
+        12. DP
+        13. Bit manipulation.
+
+3. Patterns :- 
+      Resource :- https://www.pepcoding.com/resources/online-java-foundation/patterns
+      Best online Java :- https://leetcode.com/playground/new/empty
+      Trick :-  Step 1 : Dekhna Chiye kitni rows hai (n ke liye )
+                Step 2 : Toh rows ke hisab se hum outer loop lgaenge 
+                for(int i=0; i<rows; i++){
+
+                }
+                Step 3 : Humko haar rows ke liye kitne columns hai hor kitne space hai uske liye ek table likhni hogi 
+                for(int j=0; j<=columns; j++){
+               
+                }
+
+                Note:- System.out.println() --> Hamesha outer loop khtm hone se just pehle likhna hai && 
+                       System.out.print() iska use krna hai bakki jgah
+                    2. Jabb Space last main ho toh hum usko ignore kr skte hain 
+
+
+   ex. 
+       n = 3
+       *       
+       * *   
+       * * * 
+       n == rows 
+       rowNo   Columns  Space  
+       1        1        2 
+       2        2        1
+       3        3        0
+       for(int i=0; i<n; i++){
+           // Columns 
+           for(int j=0; j<=i; j++){
+               System.out.print("* ")
+           }
+           // space 
+           for(int i= n-1-i; i>0; i--){
+               System.out.print("  ")
+           }
+
+           System.out.println();
+        }
+
+        *	*	*	*	*	
+        *	*	*	*	
+        *	*	*	
+        *	*	
+        *
+        n == rows
+        Columns == n + 1 - rowNo
+        rowNo   Columns  Space  
+       1        5        0
+       2        4        1
+       3        3        2
+       4        2        3
+       5        1        4
+       for(int i=1; i<=n; i++){
+           //columns
+           for(int j=0; j<n+1-i; j++){
+               System.out.print("*\t");
+           }
+            //space
+           for(int j=1; j<i; j++){
+              System.out.print("\t");
+           }
+           System.out.println();
+       }
+
+        n = 5
+                        *	
+                    *	*	
+                *	*	*	
+            *	*	*	*	
+        *	*	*	*	*
+        n == rows
+        5 - 2 
+        rowNo   Space  Columns  
+       1        4        1
+       2        3        2
+       3        2        3
+       4        1        4
+       5        0        5
+       for(int i=1; i<=n; i++){
+           //Space
+           for(int j=1; j<=n-i; j++){
+               System.out.print("\t");
+           }
+           // Columns 
+           for(int j=1; j<=i; j++){
+               System.out.print("*\t");
+           }
+           System.out.println();
+       }
+
+
+
+       for(int i=0; i<n; i++){  <- outer loop = jitni rows hongi 
+           for(int j=0; j<i; j++){  <- inner loops 
+               System.out.print("* ");
+           }
+           System.out.println();
+       }
+
+       n=3 = 3 * 2 - 1 = 5
+       *
+       * *
+       * * *
+       * *
+       *
+       2 * n - 1 == rows 
+       n= 4 = 4 * 2 - 1 = 7
+       *
+       * *
+       * * *
+       * * * *
+       * * *
+       * *
+       *
+       for(int i=0; i< 2 * n - 1 ; i++ ){
+
+       }
+
+       n == 4
+       * * * *
+       * * *
+       * *
+       *
+       * *
+       * * *
+       * * * *
+       2*n - 1 == rows 
+       
+       char ch = 'E'
+       A
+       A B 
+       A B C
+       A B C D 
+       A B C D E 
+       ch == rows 
+       for(char i = 'A'; i<= ch; i++){
+
+       }
+
+    n==5
+       		*	
+	    *	*	*	
+    *	*	*	*	*	
+	    *	*	*	
+		    *	
+    n == rows 
+     rowNo   Space  Columns  
+       1        2        1
+       2        1        3
+       3        0        5
+       4        1        3
+       5        2        1
+       // Hard Way
+       for(int i=1; i<=n; i++){
+           int spc = 0;
+           int col = 0;
+           if(i <= n/2 + 1){
+                spc = n/2 - i + 1;
+                col = 2*i - 1; 
+           }else {
+                spc = n/2 - (n - i);
+                col = 2 *(n - i) + 1;
+           }
+
+           //Space 
+           for(int j=1; j<=spc; j++){
+               System.out.print("\t");
+           }
+           // Columns
+           for(int j= 1; j<=col; j++){
+               System.out.print("*\t");
+           }
+           System.out.println();
+       }
+       // Easy Way
+       int spc = n/2;
+       int col = 1;
+       boolean flag = true;
+       for(int i=1; i<=n; i++){
+                    
+           //Space 
+           for(int j=1; j<=spc; j++){
+               System.out.print("\t");
+           }
+           // Columns
+           for(int j= 1; j<=col; j++){
+               System.out.print("*\t");
+           }
+           System.out.println();
+
+            if(flag == true){
+               spc--;
+               col += 2;
+               if(spc == 0){
+                   flag = false;
+               }
+           }else {
+               spc++;
+               col -= 2;
+           }
+       }
+
+        n == 5
+        *	*	*		*	*	*	
+        *	*				*	*	
+        *						*	
+        *	*				*	*	
+        *	*	*		*	*	*	
+       n == rows
+       rowNo   Columns  Space Columns  
+       1        3        1     3 
+       2        2        3     2
+       3        1        5     1
+       4        2        3     2 
+       5        3        1     3
+       
+       int col = n/2 + 1;
+       int spc = 1;
+       boolean flag = true;
+       for(int i=1; i<=n; i++){
+           //columns
+           for(int j=1; j<=col; j++){
+               System.out.print("*\t");
+           }
+           // space
+           for(int j=1; j<=spc; j++){
+               System.out.print("\t");
+           }
+            //columns
+           for(int j=1; j<=col; j++){
+               System.out.print("*\t");
+           }
+
+            if(flag == true){
+                col--;
+                spc += 2;
+                if(col == 1){
+                    flag = false;
+                }
+            }else {
+                col++;
+                spc-=2;
+            }
+
+       }
