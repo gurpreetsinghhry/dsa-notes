@@ -1,0 +1,249 @@
+Today Topics :- Functions & Arrays
+Practice :- https://leetcode.com/tag/array/
+
+
+Function / Method :- 
+     1. Aapna Kam aasan krne ke liye.
+     2. Readability --> Jis code ko padne main assani ho. 
+     3. Time optimization bhi krte hai. 
+     4. Error Handling bhi improve hoti hai. 
+
+    void ---> No return 
+
+public class Main {
+    public static void main(String[] args) {
+       
+
+    }
+    public static void sum(int val1, int val2){
+
+        int res = val1 + val2;
+        System.out.println(res);
+    }
+
+} 
+
+ // Celcius to fahrenheit :- (C × 9/5) + 32 = F
+ public class Main {
+    public static void main(String[] args) {
+        int cel = 45;
+        int val =CelToFeh(cel);
+        System.out.println(val);
+        cel = 50;
+        val =CelToFeh(cel);
+        System.out.println(val);
+        cel = 55;
+        val =CelToFeh(cel);
+        System.out.println(val);
+    }
+    public static int CelToFeh(int val){
+        int f =  (val * 9)/5 + 32;
+        return f;
+    }
+ }
+
+//  Arrays :- 
+public class Main {
+    public static void main(String[] args) {
+        // Ek Class Hai == 500 bche 
+        String name1 = "hi";
+        String name2 = "bye";
+        String name3 = "good";
+        String name4 = "bad";
+        String name5 = "morning";
+        System.out.println(name1);
+        System.out.println(name2);
+        System.out.println(name3);
+        System.out.println(name4);
+        System.out.println(name5);
+        
+       // KyaStoreKrteHai []  ArrayKaName = new KyaStoreKrteHai[ArrayKaSize];
+       String [] names = new String[5];
+      // names ----->   [ null , null , null , null , null ]
+      //                   0      1      2       3     4
+      //  index ---> 0 to arrayKaSize - 1 === 0 to 4
+
+       names[0] = "hi";
+       names[1] = "bye";
+       names[2] = "good";
+       names[3] = "bad";
+       names[4] = "morning";
+        // names ----->   [ "hi" , "bye" , "good" , "bad" , "morning" ]
+        // names[-1] = "kchBhi"; ---> Exception : Array Index Out of Bound Exception 
+        // names[5] = "kchBhi";   ---> Exception : Array Index Out of Bound Exception 
+
+
+     }
+   
+ }
+     
+Note:- 1. Agar hum array ko direct print krwane jaenge to array nhi uska address print hota hai.
+       
+ Array Ko Print Krna Sikhte hai :-
+ ==============================
+
+ 1. Using Method Arrays.toString() :- 
+    :- Ek Array Ko String main Convert kr deta hai.
+    System.out.println( Arrays.toString() );
+ 2. Using loop :- 
+    int ArrayKiLength = ArrayKaName.length;
+    for(int i=0; i< ArrayKiLength; i++){
+        // Haar Index Ki Value Nikalo 
+        String val = ArrayKaName[Index];
+        System.out.println(val);
+    }
+    int i = 0;
+    while(i< ArrayKiLength){
+        String val = ArrayKaName[Index];
+        System.out.println(val);
+        i++;
+    }
+    // For-Each Loop se Pring Krwana
+    for( String val :  ArrayKaName ){
+        System.out.println(val);
+    }
+
+
+    // Arrays --> 1. Array Kaise initialize krte hai.
+                  2. Array Ka Size Kaise nikalte hai.
+                  3. Array main kaise value set and get krte hai.
+                  4. Array main traversal kaise krte hai. 
+
+
+    1. Ek Array Bnao jismain 1 to 20 tak counting ho.
+     int[] arr = new int[20];
+     arr[0] = 1;
+     arr[1] = 2;
+     ....
+     arr[19] = 20; 
+     for(int i=0; i<arr.length; i++){
+         arr[i] = i+1;
+     }
+
+
+     public class Main {
+    public static void main(String[] args) {       
+        // 1. Ek array bnao hor 1 to 20 tak counting usmain dalo 
+        // 2. ---------------- 15 to 30 tak counting usmain dalo 
+        // 3. ---------------- n1 to n2 tak counting usmain dalo
+        // 4. ----------------------------- sbhi bich ke odd numbers;
+        // 5. ----------------------------- sbhi bich ke prime numbers; 
+        int n1 = 0;
+        int n2 = 250000;
+        for(int i=n1; i<=n2; i++){
+            if(isPrime(i)){
+                // System.out.print(i+" "); 
+            }
+        }      
+        
+    }
+    // Log(N)
+    public static boolean isPrime(int val){
+        if(val<=1){
+            return false;
+        }
+       
+        for(int i=2; i*i<=val; i++){
+            if(val%i==0){
+                return false;
+            }
+        }
+        return true;        
+    } 
+    public static boolean isPrime1(int val){
+        if(val<=1){
+            return false;
+        }
+       
+        for(int i=2; i<val; i++){
+            if(val%i==0){
+                return false;
+            }
+        }
+        return true;        
+    }
+ }
+
+ ######### Array ki manipulation :- 
+
+   public class Main {
+    public static void main(String[] args) {       
+     // 1. Sbhi ko 10 times krdo 
+    // 2. Odd ko Double krdo and even ko half krdo
+    // 3. Odd index ko double krdo and even index ko 3 times krdo
+    // 4. Array Ko Reverse krna 
+        int[] arr = new int[]{1,2,3,4,5,6,7,8,9,10};
+        System.out.println(Arrays.toString(arr));
+        int[] reverse = new int[arr.length];
+        for(int i=0; i< arr.length; i++){
+            reverse[i] = arr[arr.length-1-i];
+        }
+        System.out.println(Arrays.toString(reverse));
+    }
+ }
+    
+
+    #### ARRAY Reverse
+public class Main {
+    public static void main(String[] args) {       
+     // 1. Sbhi ko 10 times krdo 
+    // 2. Odd ko Double krdo and even ko half krdo
+    // 3. Odd index ko double krdo and even index ko 3 times krdo
+    // 4. Array Ko Reverse krna 
+        int[] arr = new int[]{1,2,3,4,5,6,7,8,9,10};
+        System.out.println(Arrays.toString(arr));
+        int left = 0;
+        int right= arr.length-1;
+        while(left < right){
+            swap(arr, left, right);
+            left++;
+            right--;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+    public static void swap(int[] arr, int left, int right){
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+    }
+ }
+
+HW :- Rotate an Arrays 
+
+        int[] arr = new int[]{1,2,3,4,5};
+        int k = 2;
+        // [1,2,3,4,5] --->[5,1,2,3,4]----> [4,5,1,2,3]
+    
+ 
+     
+          
+          
+
+
+
+
+
+ 
+     
+          
+          
+
+
+
+
+
+ 
+ 
+     
+          
+          
+
+
+
+
+
+
+
+
+
+ 
